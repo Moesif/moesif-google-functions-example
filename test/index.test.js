@@ -41,17 +41,6 @@ const httpInvocation = (fnUrl, port, body) => {
 };
 
 describe('index.test.js', () => {
-  before(() => {
-    assert(
-      process.env.GOOGLE_CLOUD_PROJECT,
-      `Must set GOOGLE_CLOUD_PROJECT environment variable!`
-    );
-    assert(
-      process.env.GOOGLE_APPLICATION_CREDENTIALS,
-      `Must set GOOGLE_APPLICATION_CREDENTIALS environment variable!`
-    );
-  });
-
   describe('functions_helloworld_get helloGET', () => {
     const PORT = 8081;
     let ffProc;
@@ -84,10 +73,12 @@ describe('index.test.js', () => {
       await ffProc;
     });
 
-    it('syncedOutgoing: should print a name via GET', async () => {
+    it('syncedOutgoing: should get an body item', async () => {
       const response = await httpInvocation('syncedOutgoing?index=5', PORT);
+      const jsonResult = JSON.parse(response.body);
 
       assert.strictEqual(response.statusCode, 200);
+      assert.strictEqual(jsonResult.id, 5);
     });
   });
 

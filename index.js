@@ -99,6 +99,7 @@ exports.delayedOutgoing = (req, res) => {
 // [Start express app example]
 /**
  * An Express App with Moesif added as middleware.
+ * This will instrument incoming API calls.
  *
  */
 const express = require('express');
