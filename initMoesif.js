@@ -13,4 +13,4 @@ const moesifMiddleware = moesif(options);
 
 moesifMiddleware.startCaptureOutgoing();
 
-exports.moesif = moesifMiddleware;
+exports.moesifMiddleware = moesifMiddleware;

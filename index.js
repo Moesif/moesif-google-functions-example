@@ -4,7 +4,7 @@
 // [START functions_helloworld_http]
 const escapeHtml = require('escape-html');
 const axios = require('axios');
-const moesifMiddleware = require('./initMoesif');
+const { moesifMiddleware } = require('./initMoesif');
 // [END functions_helloworld_http]
 
 // [START functions_helloworld_get]
@@ -101,6 +101,7 @@ exports.delayedOutgoing = (req, res) => {
  * An Express App with Moesif added as middleware.
  *
  */
+const express = require('express');
 const app = express();
 app.use(moesifMiddleware);
 
