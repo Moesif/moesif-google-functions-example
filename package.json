@@ -22,10 +22,8 @@
     "@google-cloud/debug-agent": "^5.0.0",
     "axios": "^0.20.0",
     "escape-html": "^1.0.3",
-    "moesif-nodejs": "^3.0.0",
-    "pug": "^3.0.0",
     "express": "^4.16.3",
-    "supertest": "^4.0.2"
+    "moesif-nodejs": "^3.0.0"
   },
   "devDependencies": {
     "@google-cloud/functions-framework": "^1.1.1",
@@ -39,6 +37,7 @@
     "request": "^2.88.0",
     "requestretry": "^4.0.0",
     "sinon": "^9.0.0",
+    "supertest": "^4.0.2",
     "uuid": "^8.0.0",
     "yargs": "^15.0.0"
   }
