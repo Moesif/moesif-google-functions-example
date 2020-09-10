@@ -1,4 +1,3 @@
-
 'use strict';
 
 // [START functions_helloworld_http]
@@ -49,9 +48,10 @@ exports.syncedOutgoing = (req, res) => {
       console.log('response from axios back');
       console.log(JSON.stringify(response.data));
       res.json(response.data);
-    }).catch((err) => {
+    })
+    .catch((err) => {
       res.status(500).json({
-        error: String(err)
+        error: String(err),
       });
     });
 };
@@ -95,7 +95,6 @@ exports.delayedOutgoing = (req, res) => {
 };
 // [END functions_delayedOutgoing]
 
-
 // [Start express app example]
 /**
  * An Express App with Moesif added as middleware.
@@ -111,7 +110,7 @@ app.get('/endpoints/:id', (req, res) => {
   res.status(200).json({
     name: `name${id}`,
     endpoint: 'test',
-    id: id
+    id: id,
   });
 });
 
@@ -120,7 +119,7 @@ app.post('/endpoints', (req, res) => {
   res.status(201).json({
     id: '50',
     name: name,
-    endpoint: 'test'
+    endpoint: 'test',
   });
 });
 

@@ -3,16 +3,15 @@
 
 ## Background:
 
-This repo shows examples of how you can set up [moesif-nodejs SDK](https://github.com/Moesif/moesif-nodejs) with both incoming API calls and outGoing API calls.
+This repo shows examples of how you can set up [moesif-nodejs SDK](https://github.com/Moesif/moesif-nodejs) with capturing both incoming API calls and outGoing API calls in a [Google Cloud Functions environment](https://cloud.google.com/functions/docs).
 
-There are three key example set ups:
+There are three key examples:
 
 - expressApp, this is an example express app with Moesif Middleware installed where all _incoming_ APIs will be captured.
 - syncedOutgoing, this is where when triggered, it will make an API call to an external source, and this API call should be captured also.
 - delayedOutgoing, this is where when triggered, it will immediately return a response, but then will trigger a series of API call to an external source. This may fail to be captured by Moesif if it exceeds timeout of google functions environment. However, it may be ok when google execution environment continues.
 
-## To Set up the test
-
+## Initial Set up
 
 ### Moesif Application Id
 
