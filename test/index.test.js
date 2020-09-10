@@ -1,4 +1,3 @@
-
 const path = require('path');
 const assert = require('assert');
 const requestRetry = require('requestretry');
@@ -6,9 +5,9 @@ const uuid = require('uuid');
 const sinon = require('sinon');
 const execPromise = require('child-process-promise').exec;
 
-const program = require('..');
-const fileName = `test-${uuid.v4()}.txt`;
-const bucketName = process.env.FUNCTIONS_BUCKET;
+// const program = require('..');
+// const fileName = `test-${uuid.v4()}.txt`;
+// const bucketName = process.env.FUNCTIONS_BUCKET;
 
 const startFF = (target, signature, port) => {
   const cwd = path.join(__dirname, '..');
@@ -16,7 +15,7 @@ const startFF = (target, signature, port) => {
   // Workaround: include "& sleep <TIMEOUT>; kill $!" in executed command
   return execPromise(
     `functions-framework --target=${target} --signature-type=${signature} --port=${port} & sleep 2; kill $!`,
-    {shell: true, cwd}
+    { shell: true, cwd }
   );
 };
 
@@ -76,7 +75,6 @@ describe('index.test.js', () => {
     it('syncedOutgoing: should get an body item', async () => {
       const response = await httpInvocation('syncedOutgoing?index=5', PORT);
       const jsonResult = JSON.parse(response.body);
-
       assert.strictEqual(response.statusCode, 200);
       assert.strictEqual(jsonResult.id, 5);
     });
@@ -95,7 +93,10 @@ describe('index.test.js', () => {
     });
 
     it('delayedOutgoing: should print a name via GET', async () => {
-      const response = await httpInvocation('delayedOutgoing?name=John&count=5', PORT);
+      const response = await httpInvocation(
+        'delayedOutgoing?name=John&count=5',
+        PORT
+      );
 
       assert.strictEqual(response.statusCode, 200);
       assert.strictEqual(response.body, 'Hello John!');
@@ -124,7 +125,9 @@ describe('index.test.js', () => {
     });
 
     it('expressApp: should post a body via POST', async () => {
-      const response = await httpInvocation('endpoints', PORT, { name: 'helloworld' });
+      const response = await httpInvocation('endpoints', PORT, {
+        name: 'helloworld',
+      });
       console.log(response.body);
       const jsonResult = response.body;
       assert.strictEqual(response.statusCode, 201);
