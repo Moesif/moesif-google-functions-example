@@ -18,14 +18,14 @@ There are three key example set ups:
 
 First, obtain your _Moesif Application Id_ from the onboarding flow or installation section of your Moesif Account.
 
-Replace `Your Application Id` in the `initiMoesif.js` with your actual application Id.
+Replace `Your Application Id` in the `initMoesif.js` file with your actual application Id.
 
 ### Google Cloud Function environment
 
 If you haven't done so, please follow [Google Quick Start guide](https://cloud.google.com/functions/docs/first-nodejs) to ensure you can create and deploy functions and have `glcoud` properly installed.
 
 
-## Run Test Locally.
+## Run Tests Locally
 
 You can also start each individual service and run locally using the `functions-framework`:
 
@@ -33,7 +33,7 @@ You can also start each individual service and run locally using the `functions-
 - `npm run start-delayedOutgoing`
 - `npm run start-expressApp`
 
-And simply use postman, [api request runner](http://www.apirequest.net) or even an browser to test against these end points locally.
+And simply use postman, [api request runner](http://www.apirequest.io) or even an browser to test against these end points locally.
 
 Or you can run these automated tests:
 
