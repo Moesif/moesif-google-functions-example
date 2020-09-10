@@ -110,15 +110,17 @@ app.get('/endpoints/:id', (req, res) => {
   const id = req.params.id;
   res.status(200).json({
     name: `name${id}`,
-    endpoint: id
+    endpoint: 'test',
+    id: id
   });
 });
 
 app.post('/endpoints', (req, res) => {
   const name = (req.body && req.body.name) || 'default';
   res.status(201).json({
-    id: 50,
-    name: name
+    id: '50',
+    name: name,
+    endpoint: 'test'
   });
 });
 

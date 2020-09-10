@@ -15,7 +15,7 @@ const startFF = (target, signature, port) => {
   // exec's 'timeout' param won't kill children of "shim" /bin/sh process
   // Workaround: include "& sleep <TIMEOUT>; kill $!" in executed command
   return execPromise(
-    `functions-framework --target=${target} --signature-type=${signature} --port=${port} & sleep 1; kill $!`,
+    `functions-framework --target=${target} --signature-type=${signature} --port=${port} & sleep 2; kill $!`,
     {shell: true, cwd}
   );
 };
@@ -99,6 +99,38 @@ describe('index.test.js', () => {
 
       assert.strictEqual(response.statusCode, 200);
       assert.strictEqual(response.body, 'Hello John!');
+    });
+  });
+
+  describe('functions_expressApp expressApp', () => {
+    const PORT = 8084;
+    let ffProc;
+
+    before(() => {
+      ffProc = startFF('expressApp', 'http', PORT);
+    });
+
+    after(async () => {
+      await ffProc;
+    });
+
+    it('expressApp: should get an example endpoint via GET', async () => {
+      const response = await httpInvocation('endpoints/6', PORT);
+      console.log(response.body);
+      const jsonResult = JSON.parse(response.body);
+      assert.strictEqual(response.statusCode, 200);
+      assert.strictEqual(jsonResult.id, '6');
+      assert.strictEqual(jsonResult.endpoint, 'test');
+    });
+
+    it('expressApp: should post a body via POST', async () => {
+      const response = await httpInvocation('endpoints', PORT, { name: 'helloworld' });
+      console.log(response.body);
+      const jsonResult = response.body;
+      assert.strictEqual(response.statusCode, 201);
+      assert.strictEqual(jsonResult.id, '50');
+      assert.strictEqual(jsonResult.name, 'helloworld');
+      assert.strictEqual(jsonResult.endpoint, 'test');
     });
   });
 });
