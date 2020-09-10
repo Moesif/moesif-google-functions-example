@@ -12,7 +12,10 @@
     "start-helloGet": "npx @google-cloud/functions-framework --target=helloGET",
     "start-syncedOutgoing": "npx @google-cloud/functions-framework --target=syncedOutgoing",
     "start-delayedOutgoing": "npx @google-cloud/functions-framework --target=delayedOutgoing",
-    "start-expressApp": "npx @google-cloud/functions-framework --target=expressApp"
+    "start-expressApp": "npx @google-cloud/functions-framework --target=expressApp",
+    "deploy-syncedOutgoing": "gcloud functions deploy syncedOutgoing --runtime nodejs10 --trigger-http --allow-unauthenticated",
+    "deploy-delayedOutgoing": "gcloud functions deploy delayedOutgoing --runtime nodejs10 --trigger-http --allow-unauthenticated",
+    "deploy-expressApp": "gcloud functions deploy expressApp --runtime nodejs10 --trigger-http --allow-unauthenticated"
   },
   "dependencies": {
     "@google-cloud/debug-agent": "^5.0.0",
